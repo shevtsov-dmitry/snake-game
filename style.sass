@@ -1,27 +1,34 @@
+$cell-size: 30px
+@mixin dfaj
+    display: flex
+    justify-content: center
+    align-items: center
+    
+
 body
     background-color: #333
 
 .container
     height: 95vh
     width: 100%
-    display: flex
+    @include dfaj
     flex-direction: column
-    align-items: center
-    justify-content: center
+    
 
     ul
-        display: flex
-        justify-content: center
-        align-items: center
+        @include dfaj
         list-style-type: none
         margin: 0
         padding: 0
 
         li
             background-color: #cc8f8f
-            width: 30px
-            height: 30px
+            width: $cell-size
+            height: $cell-size
             margin: 0
             padding: 0
             border: solid 0.1px
             border-color: #465046
+
+.snake-head
+    background-color: #30f508 !important
