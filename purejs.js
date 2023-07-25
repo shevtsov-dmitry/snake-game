@@ -26,10 +26,38 @@ let x = y
 let snakeHead = rows[y].children[x]
 
 snakeHead.classList.add('snake-head')
-// let num =rows.length/2
-// setInterval(() => {
+// movement
+let movingRight = false, movingLeft = false, movingUp = false , movingDown = false
+document.addEventListener('keydown', (event) => {
+    switch (event.key){
+        case "ArrowUp":
+            movingUp = true, movingLeft = false, 
+            movingDown = false, movingRight = false
+        break
+        case "ArrowDown":
+            movingUp = false, movingLeft = false, 
+            movingDown = true, movingRight = false
+        break
+        case "ArrowLeft":
+            movingUp = false, movingLeft = true, 
+            movingDown = false, movingRight = false
+        break
+        case "ArrowRight": 
+            movingUp = false, movingLeft = false, 
+            movingDown = false, movingRight = true
+        break
+    }
+})
 
-//     num++
-//     rows[num].children[num].classList.add('snake-head')
-//     rows[num - 1].children[num - 1].classList.remove('snake-head')
-// }, 500)
+setInterval(() => {
+    if(movingUp) y--
+    if(movingDown) y++
+    if(movingLeft) x--
+    if(movingRight) x++
+
+    rows[y].children[x].classList.add('snake-head')
+
+    // rows[y].children[x].classList.add('snake-head')
+    // rows[y - 1].children[x - 1].classList.remove('snake-head')
+}, 500)
+
